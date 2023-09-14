@@ -3,7 +3,9 @@ import {theverge} from './navBarObjectPage';
 const page = new theverge(); 
 const fs = require('fs')
 test('navigate to theverge', async () => {
-    await BasePage.navigate();
-    await BasePage.getElement(theverge.navBar);
-    let text = await BasePage.getElement();
+    await page.navigate();
+    await page.getElement(page.tech);
+    await page.click(page.tech);
+    await page.getElement(page.tech);
+    await page.click(page.homebutton);
 });
