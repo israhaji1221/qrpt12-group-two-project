@@ -8,12 +8,8 @@ export class theVerge extends BasePage{
     tech: By = By.xpath('(//a[@class="hover:opacity-50 hover:transition-all hover:ease-in-out"])[1]');
     reviews: By = By.xpath('(//a[@class="hover:opacity-50 hover:transition-all hover:ease-in-out"])[2]');
     science: By =By.xpath('(//a[@class="hover:opacity-50 hover:transition-all hover:ease-in-out"])[3]');
-    entrtaintment: By = By.xpath('(//a[@class="hover:opacity-50 hover:transition-all hover:ease-in-out"])[4]');
-    //homebutton cannot figure out selector
-    homeButton: By = By.xpath('(//a[@*])[4]');
-    moreButton: By = By.xpath('//span[@class="hidden md:inline"]');
-    xButton: By = By.xpath('//button[@class="curser-pointer hover:opacity-60 hover:transition-all hover:ease-in-out"]');
-    constructor() {
-        super({url: 'https://www.theverge.com'});
-    };
+    Entrtaintment: By = By.xpath('(//a[@class="hover:opacity-50 hover:transition-all hover:ease-in-out"])[4]');
+    homebutton: By = By.css('.h-[28px].w-[117px].hover:opacity-60.hover:transition-all.hover:ease-in-out.md:translate-y-2.fil-white]"]');
+    morebutton: By = By.xpath('//.span[@class="hidden md:inline"]');
+    xbutton: By = By.css('//button[@class="curser-pointer hover:opacity-60 hover:transition-all hover:ease-in-out"]');
 };
