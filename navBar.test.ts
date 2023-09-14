@@ -6,6 +6,4 @@ test('navigate to theverge', async () => {
     await BasePage.navigate();
     await BasePage.getElement(theverge.navBar);
     let text = await BasePage.getElement();
-    
-
 });
