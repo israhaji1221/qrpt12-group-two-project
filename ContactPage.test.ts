@@ -97,4 +97,11 @@ test('hover over the account page and click the sign up button then comfirm it l
     expect (signUpButton).toContain("https://auth.voxmedia.com/signup?community_id=372&return_to=https://www.theverge.com/contact");
     await page.driver.quit();
 });
+test('hover over the account page and click the sign up button then comfirm it leads to the sign up page', async () => {
+    await page.getElement(page.signUpButton);
+    await page.click(page.signUpButton);
+    let signUpButton = await page.driver.getCurrentUrl();
+    expect (signUpButton).toContain("https://auth.voxmedia.com/signup?community_id=372&return_to=https://www.theverge.com/contact");
+    await page.driver.quit();
+});
 }); 
