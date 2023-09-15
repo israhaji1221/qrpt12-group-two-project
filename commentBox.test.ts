@@ -2,6 +2,7 @@ import { stringify } from 'ts-jest';
 import {BasePage} from './basePage';
 import {theVerge} from './commentBoxPageObject';
 import { By, until, WebDriver } from 'selenium-webdriver';  
+import { titleContains } from 'selenium-webdriver/lib/until';
 const page = new theVerge(); 
 const fs = require('fs')
 
@@ -35,10 +36,21 @@ describe("Testing Article page and Comment Box", ()=> {
 
         test('Click social media links and check destination popups', async () => {
         //need to figure out how to verify URL of popup
+            const originalWindow = await page.driver.getWindowHandle();
             await page.getElement(page.twitterBtn);
             await page.click(page.twitterBtn);
-            let twitterURLString = await page.driver.getWindowHandle();
-            expect (twitterURLString).toContain("Twitter / X")
+            await page.driver.wait(
+                async () => (await page.driver.getAllWindowHandles()).length === 2, 10000
+            );
+            const windows = await page.driver.getAllWindowHandles();
+            windows.forEach(async handle => {
+            if (handle !== originalWindow) {
+            await page.driver.switchTo().window(handle);
+            }
+            await page.driver.wait(until.titleIs('Log in to Twitter / X'), 10000);
+            let twitterURLString = await page.driver.getCurrentUrl();
+            await page.driver.switchTo().window(originalWindow)
+            expect (twitterURLString).toContain("twitter.com/i/flow/login")
             fs.writeFile(`${__dirname}/testResults.txt`, twitterURLString, (e) =>{
                 if (e) console.log(e);
                 else console.log('Twitter Popup Accessed');
@@ -71,4 +83,4 @@ describe("Testing Article page and Comment Box", ()=> {
 //     // await page.click(page.textEdit);
 //     // await page.setInput(page.textEdit, 'This is some text');
 // });
-
+})
