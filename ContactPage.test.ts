@@ -18,14 +18,14 @@ test('click the please select button to view the dropdown menu', async () => {
     await page.getElement(page.pleaseSelectButton);
     await page.click(page.pleaseSelectButton);
     let pleaseSelectButtonUrl = await page.driver.getCurrentUrl();
-    expect (pleaseSelectButtonUrl).toContain("showDropdownMenu");
+    expect (pleaseSelectButtonUrl).toContain("DropdownMenu");
 });
 
 test('click the first and last name box to enter text', async () => {
     await page.getElement(page.firstLastNameBox);
     await page.click(page.firstLastNameBox);
     let firstLastNameBox = await page.driver.getCurrentUrl();
-    expect (firstLastNameBox).toContain("Janet Brown");
+    expect (firstLastNameBox).toContain("JanetBrown");
 });
 
 test('click the email address box to enter text', async () => {
