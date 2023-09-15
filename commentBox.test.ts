@@ -5,7 +5,7 @@ const page = new theVerge();
 const fs = require('fs')
 
 //need to locate things to verify through expect on all tests
-describe("Testing Comment Box", ()=> {
+describe("Testing Article page and Comment Box", ()=> {
     afterAll: page.driver.quit
 test('navigate to article page and click comment button', async () => {
     // need to set navigate to home page and access through top articles so article changes each time test is run
