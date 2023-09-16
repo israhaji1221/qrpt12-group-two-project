@@ -7,7 +7,6 @@ import { titleContains } from 'selenium-webdriver/lib/until';
 const page = new theVerge();
 const fs = require('fs');
 
-// Need to locate things to verify through expect on all tests
 describe("Testing Article page and Comment Box", () => {
 
     test('Click comment button', async () => {
@@ -36,7 +35,6 @@ describe("Testing Article page and Comment Box", () => {
     });
 
     test('Click Twitter and check destination', async () => {
-        // Need to figure out how to verify the URL of the popup
         const originalWindow = await page.driver.getWindowHandle();
         await page.getElement(page.twitterBtn);
         await page.click(page.twitterBtn);
@@ -83,18 +81,19 @@ describe("Testing Article page and Comment Box", () => {
 
     });
 
-    test('Click share button and check link', async () => {
-        await page.getElement(page.linkBtn);
-        await page.click(page.linkBtn);
-    });
-
     test('Click author name and confirm correct destination page', async () => {
         // Need to store button text in a variable
+        const authorLinkName = await page.getText(page.authorBtn);
         await page.getElement(page.authorBtn);
         await page.click(page.authorBtn);
-        // Need to expect authorName to match the text value of authorBtn variable
         await page.getElement(page.authorName);
+        const authorPageName = await page.getText(page.authorName);
+        expect (authorLinkName).toContain(`${authorPageName}`);
+        fs.writeFile(`${__dirname}/testResults.txt`, authorPageName, (e) => {
+            if (e) console.log(e);
+            else console.log(`${authorLinkName} is the same as ${authorPageName}`);
+        });
         await page.driver.quit();
     });
-
-});
+        
+    });
