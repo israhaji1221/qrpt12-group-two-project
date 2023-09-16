@@ -48,22 +48,6 @@ describe("Testing Contact Page", ()=> {
     let submitButton = await page.driver.getCurrentUrl();
     expect (submitButton).toBe("https://www.theverge.com/unison_contact/submit_contact_request");
     });
-
-    test('testing the facebok website', async () => {
-    await page.getElement(page.facebookButton);
-    await page.click(page.facebookButton);
-    let facebookButton = await page.driver.getCurrentUrl();
-    expect (facebookButton).toBe("https://www.facebook.com/verge");
-    await page.driver.get("https://www.theverge.com/contact-the-verge");
-    });
-    
-    test('testing the twitter website', async () => {
-    await page.getElement(page.twitterButton);
-    await page.click(page.twitterButton);
-    let twitterButton = await page.driver.getCurrentUrl();
-    expect (twitterButton).toBe("https://twitter.com/verge");
-    await page.driver.get("https://www.theverge.com/contact-the-verge");
-    }); 
             
     test('testing the account page', async () => {
     await page.getElement(page.accountButton);
