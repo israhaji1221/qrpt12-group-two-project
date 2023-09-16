@@ -28,7 +28,7 @@ describe("Testing Article page and Comment Box", () => {
         let closeBox = await page.driver.getCurrentUrl();
         expect(closeBox).not.toContain("showComments");
 
-        fs.writeFile(`${__dirname}/testResults.txt`, closeBox, (e) => {
+        fs.appendFile(`${__dirname}/testResults.txt`, closeBox, (e) => {
             if (e) console.log(e);
             else console.log('Successfully Closed Comments');
         });
@@ -49,7 +49,7 @@ describe("Testing Article page and Comment Box", () => {
             let twitterURLString = await page.driver.getCurrentUrl();
             await page.driver.switchTo().window(originalWindow);
             expect(twitterURLString).toContain("twitter.com/i/flow/login");
-            fs.writeFile(`${__dirname}/testResults.txt`, twitterURLString, (e) => {
+            fs.appendFile(`${__dirname}/testResults.txt`, twitterURLString, (e) => {
                 if (e) console.log(e);
                 else console.log(`Twitter Popup Accessed at ${twitterURLString}`);
             });
@@ -71,7 +71,7 @@ describe("Testing Article page and Comment Box", () => {
             let fbURLString = await page.driver.getCurrentUrl();
             await page.driver.switchTo().window(originalWindow2);
             expect(fbURLString).toContain("facebook.com/login");
-            fs.writeFile(`${__dirname}/testResults.txt`, fbURLString, (e) => {
+            fs.appendFile(`${__dirname}/testResults.txt`, fbURLString, (e) => {
                 if (e) console.log(e);
                 else console.log(`Facebook Popup Accessed at ${fbURLString}`);
 
@@ -89,7 +89,7 @@ describe("Testing Article page and Comment Box", () => {
         await page.getElement(page.authorName);
         const authorPageName = await page.getText(page.authorName);
         expect (authorLinkName).toContain(`${authorPageName}`);
-        fs.writeFile(`${__dirname}/testResults.txt`, authorPageName, (e) => {
+        fs.appendFile(`${__dirname}/testResults.txt`, authorPageName, (e) => {
             if (e) console.log(e);
             else console.log(`${authorLinkName} is the same as ${authorPageName}`);
         });
