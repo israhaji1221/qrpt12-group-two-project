@@ -52,32 +52,24 @@ describe("Testing Contact Page", ()=> {
     test('testing the facebok website', async () => {
     await page.getElement(page.facebookButton);
     await page.click(page.facebookButton);
-    await page.driver.navigate();
-    await page.driver.get("https://www.theverge.com/contact-the-verge") 
     let facebookButton = await page.driver.getCurrentUrl();
     expect (facebookButton).toBe("https://www.facebook.com/verge");
-    await page.driver.navigate();
-    await page.driver.get('https://www.theverge.com/contact-the-verge'); 
+    await page.driver.get("https://www.theverge.com/contact-the-verge");
     });
     
     test('testing the twitter website', async () => {
     await page.getElement(page.twitterButton);
     await page.click(page.twitterButton);
-    await page.driver.navigate();
-    await page.driver.get("https://www.theverge.com/contact-the-verge") 
     let twitterButton = await page.driver.getCurrentUrl();
     expect (twitterButton).toBe("https://twitter.com/verge");
-    await page.driver.navigate();
-    await page.driver.get('https://www.theverge.com/contact-the-verge'); 
+    await page.driver.get("https://www.theverge.com/contact-the-verge");
     }); 
             
     test('testing the account page', async () => {
     await page.getElement(page.accountButton);
     await page.click(page.accountButton);
-    await page.driver.navigate();
-    await page.driver.get('https://auth.voxmedia.com/login?community_id=372&return_to=') 
+    await page.driver.get('https://auth.voxmedia.com/login?community_id=372&return_to=');
     let accountButton = await page.driver.getCurrentUrl();
-   
     });
             
     test('testing the sign in page', async () => {
@@ -90,10 +82,8 @@ describe("Testing Contact Page", ()=> {
     test('testing the sign up page', async () => {
     await page.getElement(page.signUpButton);
     await page.click(page.signUpButton);
-    await page.driver.navigate();
-    await page.driver.get("https://www.theverge.com/contact-the-verge") 
     let signUpButton = await page.driver.getCurrentUrl();
-    await page.driver.get("https://www.theverge.com/contact-the-verge") 
+    await page.driver.get("https://www.theverge.com/contact-the-verge");
     });
         
     test('testing the search page', async () => {
