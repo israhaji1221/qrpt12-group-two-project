@@ -12,11 +12,10 @@ export class theVerge extends BasePage{
     submitButton: By = By.xpath('//input[@id="submit-contact-form"]');
     facebookButton: By = By.xpath('//a[@class="facebook"]');
     twitterButton: By = By.xpath('//a[@class="twitter"]');
-    RSSButton: By = By.xpath('(//a[@class="rss]');
     accountButton: By = By.xpath('//a[@class="c-global-header__login-icon"]')
-    logInButton: By = By.xpath('//a[text()="Log In"]');
+    logInButton: By = By.xpath('//li[@class="c-auth__tabs-sign-up"]');
     signUpButton: By = By.xpath('//a[text()="Sign Up"]');
-    magnifyingGlass: By = By.xpath('//span[text()="Search"]');
+    magnifyingGlass: By = By.xpath('//button[@class="c-global-header__search-trigger"]');
     searchBox: By = By.xpath('//input[@class="p-input-header__input"]');
     searchButton: By = By.xpath('//input[@class="p-input-header__link p-button"]');
     homeButton: By = By.xpath('//span[@class="sr-only"]')
